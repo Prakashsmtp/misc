@@ -1,0 +1,39 @@
+If you have two columns in an Excel sheet and you want to compare them to find values that aren't present in both columns, you can use Excel's functions and features to accomplish this.
+
+Here's a step-by-step guide to doing this:
+
+Setup: Assume you have values in Column A and Column B.
+
+Using Conditional Formatting:
+
+a. Select Column A.
+
+b. Go to Home > Conditional Formatting > New Rule.
+
+c. Choose Use a formula to determine which cells to format.
+
+d. Enter the formula =ISNA(MATCH(A1,$B$1:$B$1000,0)). Adjust the range $B$1:$B$1000 based on the number of rows you have in Column B.
+
+e. Set a format, like a background color, to highlight the cells.
+
+f. Click OK.
+
+g. Repeat the steps for Column B, but adjust the formula to =ISNA(MATCH(B1,$A$1:$A$1000,0)).
+
+Using a Helper Column:
+
+a. In Column C (or another empty column), enter the formula =IF(ISNA(MATCH(A1,$B$1:$B$1000,0)), A1 & " not in B", "").
+
+b. Drag this formula down to cover all the rows.
+
+c. In Column D (or another empty column), enter the formula =IF(ISNA(MATCH(B1,$A$1:$A$1000,0)), B1 & " not in A", "").
+
+d. Drag this formula down to cover all the rows.
+
+For either method, the highlighted cells (in the case of conditional formatting) or cells with text (in the case of the helper column) represent the values that are not found in the other column.
+
+Remember to adjust the ranges $B$1:$B$1000 and $A$1:$A$1000 according to the actual size of your data in the columns.
+
+
+
+
